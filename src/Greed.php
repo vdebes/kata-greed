@@ -35,11 +35,17 @@ class Greed
         $search = [1, 2, 3];
         foreach ($this->occurences as $value => $occurenceCount) {
             if (in_array($value, $search) === true && $occurenceCount === 3) {
-                if ($value === 3) {
-                    $triples[$value] = 300;
+                if ($value === 1) {
+                    $triples[$value] = 1000;
                     continue;
                 }
-                $triples[$value] = $value === 1 ? 1000 : 200;
+                if ($value === 2) {
+                    $triples[$value] = 200;
+                    continue;
+                }
+                if ($value === 3) {
+                    $triples[$value] = 300;
+                }
             }
         }
 

@@ -20,11 +20,11 @@ class Greed
 
     public function getScore(): int
     {
-        $fourOfAKind = $this->getFourOfAKind();
+        $multiplier = $this->getMultiplier();
         $triples = $this->getScoreFromTriples();
         $singles = $this->getScoreFromSingles();
 
-        return array_sum(array_merge($singles, $triples)) * $fourOfAKind;
+        return array_sum(array_merge($singles, $triples)) * $multiplier;
     }
 
     /**
@@ -63,7 +63,7 @@ class Greed
         return $singles;
     }
 
-    private function getFourOfAKind(): int
+    private function getMultiplier(): int
     {
         foreach ($this->occurences as $value) {
             if ($value === 4) {

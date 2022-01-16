@@ -23,8 +23,9 @@ cs-fix: ## Automatically fixes the code style whenever possible
 
 .PHONY: static
 static: ## Runs static analysis
-	$(call printSection,PHP STAN ANALYSIS)
+	$(call printSection,PHP STAN & PHPMD ANALYSIS)
 	vendor/bin/phpstan
+	vendor/bin/phpmd src text ruleset.xml
 
 .PHONY: unit
 unit: ## Runs unit tests

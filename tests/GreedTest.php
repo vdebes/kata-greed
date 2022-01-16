@@ -71,6 +71,16 @@ class GreedTest extends TestCase
             [6, 6, 6],
             600
         ];
+
+        yield [
+            [4, 4, 4, 6, 6, 6],
+            1000
+        ];
+
+        yield [
+            [4, 4, 4, 5, 5, 5],
+            900
+        ];
     }
 
     public function forOfAKindDataProvider(): \Generator

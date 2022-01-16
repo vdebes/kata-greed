@@ -8,6 +8,7 @@ class GreedTest extends TestCase
     /**
      * @dataProvider singlesDataProvider
      * @dataProvider triplesDataProvider
+     * @dataProvider forOfAKindDataProvider
      */
     public function test it calculates scores from singles(array $rolls, int $expectedResult): void
     {
@@ -59,6 +60,14 @@ class GreedTest extends TestCase
         yield [
             [4, 4, 4],
             400
+        ];
+    }
+
+    public function forOfAKindDataProvider(): \Generator
+    {
+        yield [
+            [1, 1, 1, 1],
+            2200
         ];
     }
 }

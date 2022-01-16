@@ -17,6 +17,8 @@ class Greed
 
     public function getScore(): int
     {
-        return array_sum($this->rolls);
+        $singleOnes = array_map(static fn (int $roll) => $roll === 1 ? 100 : 0, $this->rolls);
+
+        return array_sum($singleOnes);
     }
 }

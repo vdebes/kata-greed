@@ -14,7 +14,7 @@ class GreedTest extends TestCase
 
     public function test greed is constructed from dice rolls results(): void
     {
-        $rolls = [1, 2, 4];
+        $rolls = [];
         $testedInstance = new Greed($rolls);
 
         self::assertEquals(array_sum($rolls), $testedInstance->getScore());

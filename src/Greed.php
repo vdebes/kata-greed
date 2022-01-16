@@ -33,7 +33,7 @@ class Greed
     private function getScoreFromTriples(): array
     {
         $triples = [];
-        $search = [1, 2, 3, 4];
+        $search = [1, 2, 3, 4, 5];
         foreach ($this->occurences as $value => $occurenceCount) {
             if ($occurenceCount >= 3 && in_array($value, $search) === true) {
                 $triples[$value] = $value * 100;

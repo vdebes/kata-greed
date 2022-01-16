@@ -6,6 +6,8 @@ class Greed
 {
     /** @var int[] */
     private array $rolls;
+    /** @var array<int, int>  */
+    private array $occurences;
 
     /**
      * @param int[] $rolls
@@ -13,6 +15,7 @@ class Greed
     public function __construct(array $rolls)
     {
         $this->rolls = $rolls;
+        $this->occurences = array_count_values($this->rolls);
     }
 
     public function getScore(): int
@@ -33,10 +36,9 @@ class Greed
      */
     private function getTriples(): array
     {
-        $occurences = array_count_values($this->rolls);
         $triples = [];
         $search = [1];
-        foreach ($occurences as $value => $occurenceCount) {
+        foreach ($this->occurences as $value => $occurenceCount) {
             if (in_array($value, $search) === true && $occurenceCount === 3) {
                 $triples[$value] = 1000;
             }
@@ -50,12 +52,11 @@ class Greed
      */
     private function getSingles(): array
     {
-        $occurences = array_count_values($this->rolls);
         $singleOnes = array_filter(
             array_map(
                 static fn (int $value, int $key) => $key === 1 && $value < 3 ? $value * 100 : null,
-                $occurences,
-                array_keys($occurences)
+                $this->occurences,
+                array_keys($this->occurences)
             )
         );
 

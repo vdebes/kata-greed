@@ -9,6 +9,6 @@ class GreedTest extends TestCase
     {
         $testedInstance = new Greed();
         self::assertIsObject($testedInstance);
-        self::assertIsInt($testedInstance->score());
+        self::assertIsInt($testedInstance->getScore());
     }
 }

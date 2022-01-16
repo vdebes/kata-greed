@@ -20,11 +20,10 @@ class Greed
 
     public function getScore(): int
     {
-        $tripleOnes = $this->getScoreFromTriples();
-        $singleOnes = $this->getScoreFromSingles();
-        $singleFives = array_map(static fn (int $roll) => $roll === 5 ? 50 : 0, $this->rolls);
+        $triples = $this->getScoreFromTriples();
+        $singles = $this->getScoreFromSingles();
 
-        return array_sum(array_merge($singleOnes, $singleFives, $tripleOnes));
+        return array_sum(array_merge($singles, $triples));
     }
 
     /**
@@ -48,14 +47,14 @@ class Greed
      */
     private function getScoreFromSingles(): array
     {
-        $singleOnes = array_filter(
-            array_map(
-                static fn (int $value, int $key) => $key === 1 && $value < 3 ? $value * 100 : null,
-                $this->occurences,
-                array_keys($this->occurences)
-            )
-        );
+        $singles = [];
+        $search = [1, 5];
+        foreach ($this->occurences as $value => $occurenceCount) {
+            if (in_array($value, $search) === true && $occurenceCount < 3) {
+                $singles[$value] = $value === 1 ? $occurenceCount * 100 : $occurenceCount * 50;
+            }
+        }
 
-        return $singleOnes;
+        return $singles;
     }
 }

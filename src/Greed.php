@@ -4,7 +4,8 @@ namespace Vdebes\KataGreed;
 
 class Greed
 {
-    public function score(): void
+    public function score(): int
     {
+        return 0;
     }
 }

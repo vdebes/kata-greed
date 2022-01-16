@@ -19,4 +19,12 @@ class GreedTest extends TestCase
 
         self::assertEquals(array_sum($rolls), $testedInstance->getScore());
     }
+
+    public function test it calculates scores from singles(): void
+    {
+        $rolls = [1, 2];
+        $testedInstance = new Greed($rolls);
+
+        self::assertEquals(100, $testedInstance->getScore());
+    }
 }

@@ -7,7 +7,7 @@ class GreedTest extends TestCase
 {
     public function testGreed(): void
     {
-        $testedInstance = new Greed();
+        $testedInstance = new Greed([]);
         self::assertIsObject($testedInstance);
         self::assertIsInt($testedInstance->getScore());
     }

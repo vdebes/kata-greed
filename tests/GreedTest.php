@@ -21,5 +21,15 @@ class GreedTest extends TestCase
             [1, 2],
             100
         ];
+
+        yield [
+            [1, 1, 2],
+            200
+        ];
+
+        yield [
+            [5, 2],
+            50
+        ];
     }
 }

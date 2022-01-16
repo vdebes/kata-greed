@@ -20,11 +20,21 @@ class GreedTest extends TestCase
         self::assertEquals(array_sum($rolls), $testedInstance->getScore());
     }
 
-    public function test it calculates scores from singles(): void
+    /**
+     * @dataProvider singlesDataProvider
+     */
+    public function test it calculates scores from singles(array $rolls, int $expectedResult): void
     {
-        $rolls = [1, 2];
         $testedInstance = new Greed($rolls);
 
-        self::assertEquals(100, $testedInstance->getScore());
+        self::assertEquals($expectedResult, $testedInstance->getScore());
+    }
+
+    public function singlesDataProvider(): \Generator
+    {
+        yield [
+            [1, 2],
+            100
+        ];
     }
 }

@@ -20,10 +20,11 @@ class Greed
 
     public function getScore(): int
     {
+        $fourOfAKind = $this->getFourOfAKind();
         $triples = $this->getScoreFromTriples();
         $singles = $this->getScoreFromSingles();
 
-        return array_sum(array_merge($singles, $triples));
+        return array_sum(array_merge($singles, $triples)) * $fourOfAKind;
     }
 
     /**
@@ -34,12 +35,12 @@ class Greed
         $triples = [];
         $search = [1, 2, 3, 4];
         foreach ($this->occurences as $value => $occurenceCount) {
-            if (in_array($value, $search) === true && $occurenceCount === 3) {
+            if ($occurenceCount >= 3 && in_array($value, $search) === true) {
                 $triples[$value] = $value * 100;
                 if ($value === 1) {
                     $triples[$value] = 1000;
                 }
-                unset($this->occurences[$value]);
+                $this->occurences[$value] -= 3;
             }
         }
 
@@ -60,5 +61,16 @@ class Greed
         }
 
         return $singles;
+    }
+
+    private function getFourOfAKind(): int
+    {
+        foreach ($this->occurences as $value) {
+            if ($value === 4) {
+                return 2;
+            }
+        }
+
+        return 1;
     }
 }

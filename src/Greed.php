@@ -69,6 +69,9 @@ class Greed
             if ($value === 4) {
                 return 2;
             }
+            if ($value === 5) {
+                return 4;
+            }
         }
 
         return 1;

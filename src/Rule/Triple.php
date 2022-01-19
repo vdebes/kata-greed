@@ -9,9 +9,8 @@ class Triple
 
     /**
      * @param array<int, int> $occurences
-     * @return array<int>
      */
-    public function getPoints(array $occurences): array
+    public function getPoints(array $occurences): int
     {
         $triples = [];
         $search = [1, 2, 3, 4, 5, 6];
@@ -32,7 +31,7 @@ class Triple
 
         $this->occurencesRemainingToProcess = $occurences;
 
-        return $triples;
+        return array_sum($triples);
     }
 
     /**

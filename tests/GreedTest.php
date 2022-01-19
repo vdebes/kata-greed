@@ -100,4 +100,15 @@ class GreedTest extends TestCase
             16000
         ];
     }
+
+    // test for debug
+    public function testGreed(): void
+    {
+        $rolls = [1, 1, 1, 1, 1, 1];
+        $expectedResult = 16000;
+
+        $testedInstance = new Greed($rolls);
+
+        self::assertEquals($expectedResult, $testedInstance->getScore());
+    }
 }

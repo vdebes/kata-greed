@@ -28,7 +28,7 @@ class Greed
     }
 
     /**
-     * @return int[]
+     * @return array<int, int>
      */
     private function getScoreFromTriples(): array
     {
@@ -36,11 +36,16 @@ class Greed
         $search = [1, 2, 3, 4, 5, 6];
         foreach ($this->occurences as $value => $occurenceCount) {
             if ($occurenceCount >= 3 && in_array($value, $search) === true) {
-                $triples[$value] = $value * 100;
+                $occurenceLeft = $occurenceCount % 3;
+                /** @var int $occurenceMultiplier */
+                $occurenceMultiplier = ($occurenceCount - $occurenceLeft) / 3;
+
+                $triples[$value] = $value * $occurenceMultiplier * 100;
                 if ($value === 1) {
-                    $triples[$value] = 1000;
+                    $triples[$value] = $occurenceMultiplier * 1000;
                 }
-                $this->occurences[$value] -= 3;
+
+                $this->occurences[$value] = $occurenceLeft;
             }
         }
 
@@ -71,6 +76,9 @@ class Greed
             }
             if ($value === 5) {
                 return 4;
+            }
+            if ($value === 6) {
+                return 8;
             }
         }
 

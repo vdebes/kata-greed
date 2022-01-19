@@ -29,10 +29,12 @@ class Greed
             return $score;
         }
 
+        $multiplier = $this->getMultiplier();
+
         $triple = new Triple();
         $triples = $triple->getPoints($this->occurences);
+        $this->occurences = $triple->getOccurencesRemainingToProcess();
 
-        $multiplier = $this->getMultiplier();
         $singles = $this->getScoreFromSingles();
         $threePairs = $this->getScoreFromThreePairs();
 

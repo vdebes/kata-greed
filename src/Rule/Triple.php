@@ -4,6 +4,8 @@ namespace Vdebes\KataGreed\Rule;
 
 class Triple
 {
+    private array $occurencesRemainingToProcess;
+
     /**
      * @return array<int, int>
      */
@@ -26,6 +28,16 @@ class Triple
             }
         }
 
+        $this->occurencesRemainingToProcess = $occurences;
+
         return $triples;
+    }
+
+    /**
+     * @return array<int, int>
+     */
+    public function getOccurencesRemainingToProcess(): array
+    {
+        return $this->occurencesRemainingToProcess;
     }
 }

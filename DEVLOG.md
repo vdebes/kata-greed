@@ -29,3 +29,9 @@ ie encapsulation. For this, it needs this occurences array I set in the Greed co
 Since multiplier is an operation to do at the end, I will skip it for now and focus on the next rule, 
 which is getScoreFromTriples. I will create a new rule, but without thinking about a common interface for now.
 There is too much mess in the Greed class for that.
+
+__note: I should write all this in the commit messages instead of this log.__
+
+The test breaks because the refactored method tampered with a property from the Greed class (occurences). 
+I need to fix with the least amount of effort. I do not want to fall into overthinking. This is why I just 
+shunt a return value with a class property and a getter in the Triple rule.

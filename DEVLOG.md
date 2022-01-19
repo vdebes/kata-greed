@@ -23,3 +23,5 @@ There I have a first class candidate, Pattern, with a first behaviour, give a sc
 such a class and introduce it in our code. The part calculating the score from a straight seems ideal 
 since the pattern matching is dead simple and the return an integer, not one of those tricky arrays.
 
+Now that I have introduced the new class, I need to give it autonomy to do its job without me knowing how, 
+ie encapsulation. For this, it needs this occurences array I set in the Greed constructor. 

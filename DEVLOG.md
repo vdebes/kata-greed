@@ -35,3 +35,5 @@ __note: I should write all this in the commit messages instead of this log.__
 The test breaks because the refactored method tampered with a property from the Greed class (occurences). 
 I need to fix with the least amount of effort. I do not want to fall into overthinking. This is why I just 
 shunt a return value with a class property and a getter in the Triple rule.
+
+Next to refactor since to be the Singles, since it is the closest to triple in terms of behaviour.

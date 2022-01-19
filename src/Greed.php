@@ -20,6 +20,9 @@ class Greed
 
     public function getScore(): int
     {
+        if (count($this->occurences) === 6) {
+            return 1200;
+        }
         $multiplier = $this->getMultiplier();
         $triples = $this->getScoreFromTriples();
         $singles = $this->getScoreFromSingles();

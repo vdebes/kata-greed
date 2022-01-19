@@ -9,7 +9,7 @@ class GreedTest extends TestCase
      * @dataProvider singlesDataProvider
      * @dataProvider triplesDataProvider
      * @dataProvider multiplierDataProvider
-     * @dataProvider threePairsDataProvider
+     * @dataProvider specialCasesDataProvider
      */
     public function test it calculates scores from singles(array $rolls, int $expectedResult): void
     {
@@ -102,19 +102,24 @@ class GreedTest extends TestCase
         ];
     }
 
-    public function threePairsDataProvider(): \Generator
+    public function specialCasesDataProvider(): \Generator
     {
         yield [
             [2, 2, 3, 3, 4, 4],
             800
+        ];
+
+        yield [
+            [1, 2, 3, 4, 5, 6],
+            1200
         ];
     }
 
     // test for debug
     public function testGreed(): void
     {
-        $rolls = [2, 2, 3, 3, 4, 4];
-        $expectedResult = 800;
+        $rolls = [1, 2, 3, 4, 5, 6];
+        $expectedResult = 1200;
 
         $testedInstance = new Greed($rolls);
 

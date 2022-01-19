@@ -6,9 +6,8 @@ class Single
 {
     /**
      * @param array<int, int> $occurences
-     * @return int[]
      */
-    public function getPoints(array $occurences): array
+    public function getPoints(array $occurences): int
     {
         $singles = [];
         $search = [1, 5];
@@ -18,6 +17,6 @@ class Single
             }
         }
 
-        return $singles;
+        return array_sum($singles);
     }
 }

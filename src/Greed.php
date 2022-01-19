@@ -43,7 +43,7 @@ class Greed
         $threePairsRule = new ThreePairs();
         $threePairs = $threePairsRule->getPoints($this->occurences);
 
-        return ($triples + array_sum(array_merge($singles, $threePairs))) * $multiplier;
+        return ($triples + $singles + array_sum($threePairs)) * $multiplier;
     }
 
     private function getMultiplier(): int

@@ -23,8 +23,22 @@ class Greed
         $multiplier = $this->getMultiplier();
         $triples = $this->getScoreFromTriples();
         $singles = $this->getScoreFromSingles();
+        $threePairs = $this->getScoreFromThreePairs();
 
-        return array_sum(array_merge($singles, $triples)) * $multiplier;
+        return array_sum(array_merge($singles, $triples, $threePairs)) * $multiplier;
+    }
+
+    /**
+     * @return array<int>
+     */
+    private function getScoreFromThreePairs(): array
+    {
+        $pairs = array_filter($this->occurences, fn (int $count) => $count === 2);
+        if (count($pairs) === 3) {
+            return [800];
+        }
+
+        return [];
     }
 
     /**

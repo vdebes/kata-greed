@@ -3,6 +3,7 @@
 namespace Vdebes\KataGreed;
 
 use Vdebes\KataGreed\Rule\Straight;
+use Vdebes\KataGreed\Rule\Triple;
 
 class Greed
 {
@@ -28,8 +29,10 @@ class Greed
             return $score;
         }
 
+        $triple = new Triple();
+        $triples = $triple->getPoints($this->occurences);
+
         $multiplier = $this->getMultiplier();
-        $triples = $this->getScoreFromTriples();
         $singles = $this->getScoreFromSingles();
         $threePairs = $this->getScoreFromThreePairs();
 
@@ -47,31 +50,6 @@ class Greed
         }
 
         return [];
-    }
-
-    /**
-     * @return array<int, int>
-     */
-    private function getScoreFromTriples(): array
-    {
-        $triples = [];
-        $search = [1, 2, 3, 4, 5, 6];
-        foreach ($this->occurences as $value => $occurenceCount) {
-            if ($occurenceCount >= 3 && in_array($value, $search) === true) {
-                $occurenceLeft = $occurenceCount % 3;
-                /** @var int $occurenceMultiplier */
-                $occurenceMultiplier = ($occurenceCount - $occurenceLeft) / 3;
-
-                $triples[$value] = $value * $occurenceMultiplier * 100;
-                if ($value === 1) {
-                    $triples[$value] = $occurenceMultiplier * 1000;
-                }
-
-                $this->occurences[$value] = $occurenceLeft;
-            }
-        }
-
-        return $triples;
     }
 
     /**

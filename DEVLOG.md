@@ -25,3 +25,7 @@ since the pattern matching is dead simple and the return an integer, not one of 
 
 Now that I have introduced the new class, I need to give it autonomy to do its job without me knowing how, 
 ie encapsulation. For this, it needs this occurences array I set in the Greed constructor. 
+
+Since multiplier is an operation to do at the end, I will skip it for now and focus on the next rule, 
+which is getScoreFromTriples. I will create a new rule, but without thinking about a common interface for now.
+There is too much mess in the Greed class for that.

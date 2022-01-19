@@ -42,3 +42,6 @@ Singles went well. No shunt to do here. Each time I just move the private method
 dedicated class and rename it to getPoints(). This method name is not correct at this point in time. It reflects 
 where I want to go. I do not worry too much about the heterogenous return types here. First, I split the Greed class.
 
+Now is the time to let a common interface emerge from the rules. I said earlier the method naming getPoints() 
+was showing were I wanted to go: getPoints should return points to add to the total score, not this array<int, int>.
+So let's get the rules out of this behaviour one by one.

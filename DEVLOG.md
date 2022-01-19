@@ -13,3 +13,13 @@ no behaviour.
 
 Now is the time to refactor. I am tempted by going full objects right now but I have a feeling 
 that cleaning up the procedural code will reveal behaviour.
+
+## Refactoring
+I do not see of to refactor without bringing more meaning without using objects. What appears is 
+  * we identify patterns in the sequences of integers
+  * each of these patterns give a score
+  * this score is multiplied at the end
+There I have a first class candidate, Pattern, with a first behaviour, give a score. So let's create 
+such a class and introduce it in our code. The part calculating the score from a straight seems ideal 
+since the pattern matching is dead simple and the return an integer, not one of those tricky arrays.
+

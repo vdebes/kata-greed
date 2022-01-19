@@ -2,6 +2,8 @@
 
 namespace Vdebes\KataGreed;
 
+use Vdebes\KataGreed\Rule\Straight;
+
 class Greed
 {
     /** @var int[] */
@@ -21,7 +23,7 @@ class Greed
     public function getScore(): int
     {
         if (count($this->occurences) === 6) {
-            return 1200;
+            return (new Straight())->getPoints();
         }
         $multiplier = $this->getMultiplier();
         $triples = $this->getScoreFromTriples();

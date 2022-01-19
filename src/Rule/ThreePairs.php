@@ -6,15 +6,14 @@ class ThreePairs
 {
     /**
      * @param array<int, int> $occurences
-     * @return array<int>
      */
-    public function getPoints(array $occurences): array
+    public function getPoints(array $occurences): int
     {
         $pairs = array_filter($occurences, fn (int $count) => $count === 2);
         if (count($pairs) === 3) {
-            return [800];
+            return 800;
         }
 
-        return [];
+        return 0;
     }
 }

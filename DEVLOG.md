@@ -37,3 +37,8 @@ I need to fix with the least amount of effort. I do not want to fall into overth
 shunt a return value with a class property and a getter in the Triple rule.
 
 Next to refactor since to be the Singles, since it is the closest to triple in terms of behaviour.
+
+Singles went well. No shunt to do here. Each time I just move the private method related to the rule in a 
+dedicated class and rename it to getPoints(). This method name is not correct at this point in time. It reflects 
+where I want to go. I do not worry too much about the heterogenous return types here. First, I split the Greed class.
+

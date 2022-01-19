@@ -4,10 +4,12 @@ namespace Vdebes\KataGreed\Rule;
 
 class Triple
 {
+    /** @var array<int, int> $occurencesRemainingToProcess */
     private array $occurencesRemainingToProcess;
 
     /**
-     * @return array<int, int>
+     * @param array<int, int> $occurences
+     * @return array<int>
      */
     public function getPoints(array $occurences): array
     {

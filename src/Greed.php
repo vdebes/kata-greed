@@ -4,6 +4,7 @@ namespace Vdebes\KataGreed;
 
 use Vdebes\KataGreed\Rule\Single;
 use Vdebes\KataGreed\Rule\Straight;
+use Vdebes\KataGreed\Rule\ThreePairs;
 use Vdebes\KataGreed\Rule\Triple;
 
 class Greed
@@ -39,22 +40,10 @@ class Greed
         $single = new Single();
         $singles = $single->getPoints($this->occurences);
 
-        $threePairs = $this->getScoreFromThreePairs();
+        $threePairsRule = new ThreePairs();
+        $threePairs = $threePairsRule->getPoints($this->occurences);
 
         return array_sum(array_merge($singles, $triples, $threePairs)) * $multiplier;
-    }
-
-    /**
-     * @return array<int>
-     */
-    private function getScoreFromThreePairs(): array
-    {
-        $pairs = array_filter($this->occurences, fn (int $count) => $count === 2);
-        if (count($pairs) === 3) {
-            return [800];
-        }
-
-        return [];
     }
 
     private function getMultiplier(): int

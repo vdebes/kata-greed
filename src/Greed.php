@@ -23,8 +23,9 @@ class Greed
     public function getScore(): int
     {
         $straight = new Straight();
-        if ($straight->getPoints() !== 0) {
-            return $straight->getPoints();
+        $score = $straight->getPoints($this->occurences);
+        if ($score !== 0) {
+            return $score;
         }
 
         $multiplier = $this->getMultiplier();

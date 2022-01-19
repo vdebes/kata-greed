@@ -4,8 +4,8 @@ namespace Vdebes\KataGreed\Rule;
 
 final class Straight
 {
-    public function getPoints(): int
+    public function getPoints(array $occurences): int
     {
-        return 1200;
+        return count($occurences) === 6 ? 1200 : 0;
     }
 }

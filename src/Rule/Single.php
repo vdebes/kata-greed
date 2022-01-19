@@ -2,7 +2,7 @@
 
 namespace Vdebes\KataGreed\Rule;
 
-class Single
+final class Single implements Rule
 {
     /**
      * @param array<int, int> $occurences

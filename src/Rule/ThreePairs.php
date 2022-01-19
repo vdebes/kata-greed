@@ -2,7 +2,7 @@
 
 namespace Vdebes\KataGreed\Rule;
 
-class ThreePairs
+final class ThreePairs implements Rule
 {
     /**
      * @param array<int, int> $occurences

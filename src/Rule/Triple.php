@@ -2,7 +2,7 @@
 
 namespace Vdebes\KataGreed\Rule;
 
-class Triple
+final class Triple implements Rule
 {
     /** @var array<int, int> $occurencesRemainingToProcess */
     private array $occurencesRemainingToProcess;

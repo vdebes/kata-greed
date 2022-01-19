@@ -2,7 +2,7 @@
 
 namespace Vdebes\KataGreed\Rule;
 
-final class Straight
+final class Straight implements Rule
 {
     /**
      * @param array<int, int> $occurences

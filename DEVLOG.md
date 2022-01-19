@@ -45,3 +45,6 @@ where I want to go. I do not worry too much about the heterogenous return types 
 Now is the time to let a common interface emerge from the rules. I said earlier the method naming getPoints() 
 was showing were I wanted to go: getPoints should return points to add to the total score, not this array<int, int>.
 So let's get the rules out of this behaviour one by one.
+
+Now that all rules have the same method with the same return type, I can extract a common interface. 
+I also declare each rule final since I do not want a rule to have them capable of inheritance.

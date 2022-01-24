@@ -47,4 +47,7 @@ was showing were I wanted to go: getPoints should return points to add to the to
 So let's get the rules out of this behaviour one by one.
 
 Now that all rules have the same method with the same return type, I can extract a common interface. 
-I also declare each rule final since I do not want a rule to have them capable of inheritance.
+I also declare each rule final since I do not want a rule to have be capable of inheritance.
+
+As I said, I hate arrays. They occupy too much RAM in my brain. I prefer to reason about objects. 
+The occurences are hard to reason about, so let's add a new class to make the reasoning easier.

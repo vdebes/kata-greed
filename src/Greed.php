@@ -25,6 +25,8 @@ class Greed
 
     public function getScore(): int
     {
+        $sequence = new Sequence($this->rolls);
+
         $straight = new Straight();
         $score = $straight->getPoints($this->occurences);
         if ($score !== 0) {

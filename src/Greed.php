@@ -48,10 +48,18 @@ class Greed
      */
     private static function countRollsResults(int ...$rollsResults): array
     {
-        return array_intersect_key(
-            array_count_values($rollsResults),
-            array_flip(range(1, 6)),
-        );
+        $diceCount = array_fill_keys([1, 2, 3, 4, 5, 6], 0);
+
+        $rollsCount = array_count_values($rollsResults);
+        foreach ($diceCount as $diceValue => $diceNumber) {
+            if (array_key_exists($diceValue, $rollsCount) === false) {
+                continue;
+            }
+
+            $diceCount[$diceValue] = $rollsCount[$diceValue];
+        }
+
+        return $diceCount;
     }
 
     private static function scoreDiceValue(int $diceValue, int $diceNumber): int

@@ -27,9 +27,6 @@ class GreedTest extends TestCase
      */
     public function getDiceResultTestCases(): \Generator
     {
-        //@todo remove early return to start testing
-        return;
-
         yield '[233446]: nothing' => [
             [2, 3, 3, 4, 4, 6],
             0,

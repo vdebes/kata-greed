@@ -36,27 +36,27 @@ class Greed
             $score += 50;
         }
 
-        if ($count[1] === 3) {
+        if ($count[1] >= 3) {
             $score += 1000;
         }
 
-        if ($count[2] === 3) {
+        if ($count[2] >= 3) {
             $score += 200;
         }
 
-        if ($count[3] === 3) {
+        if ($count[3] >= 3) {
             $score += 300;
         }
 
-        if ($count[4] === 3) {
+        if ($count[4] >= 3) {
             $score += 400;
         }
 
-        if ($count[5] === 3) {
+        if ($count[5] >= 3) {
             $score += 500;
         }
 
-        if ($count[6] === 3) {
+        if ($count[6] >= 3) {
             $score += 600;
         }
 
@@ -82,6 +82,14 @@ class Greed
 
         if (array_search(4, $occurences)) {
             $score = $score * 2;
+        }
+
+        if (array_search(5, $occurences)) {
+            $score = $score * 4;
+        }
+
+        if (array_search(6, $occurences)) {
+            $score = $score * 8;
         }
 
         if ($number === 3) {

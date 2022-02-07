@@ -67,5 +67,17 @@ class GreedTest extends TestCase
         yield 'Four of a kind' => [
             [1, 1, 1, 1], 2000
         ];
+
+        yield 'Five of a kind' => [
+            [2, 2, 2, 2, 2], 800
+        ];
+
+        yield 'Six of a kind' => [
+            [2, 2, 2, 2, 2, 2], 1600
+        ];
+
+        yield 'Sort one' => [
+            [1, 5, 3, 1, 3, 3], 550
+        ];
     }
 }

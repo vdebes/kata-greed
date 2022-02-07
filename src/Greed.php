@@ -28,14 +28,6 @@ class Greed
 
         $score = 0;
 
-        if ($count[1] === 1) {
-            $score += 100;
-        }
-
-        if ($count[5] === 1) {
-            $score += 50;
-        }
-
         if ($count[1] >= 3) {
             $score += 1000;
         }
@@ -68,7 +60,7 @@ class Greed
             $count[2] === 1 &&
             $count[1] === 1
         ) {
-            $score = 1200;
+            return 1200;
         }
 
         $occurences = array_count_values($dices);
@@ -94,6 +86,14 @@ class Greed
 
         if ($number === 3) {
             $score = 800;
+        }
+
+        if ($count[1] === 1) {
+            $score += 100;
+        }
+
+        if ($count[5] === 1) {
+            $score += 50;
         }
 
         return $score;

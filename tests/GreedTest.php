@@ -77,7 +77,12 @@ class GreedTest extends TestCase
         ];
 
         yield 'Sort one' => [
-            [1, 5, 3, 1, 3, 3], 550
+            [1, 5, 3, 1, 3, 3], 350
         ];
+
+        yield 'Four of a kind and a single' => [
+            [1, 2, 2, 2, 2, 3], 500
+        ];
+
     }
 }

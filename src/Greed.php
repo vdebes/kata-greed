@@ -68,7 +68,20 @@ class Greed
             $count[2] === 1 &&
             $count[1] === 1
         ) {
-            $score += 1200;
+            $score = 1200;
+        }
+
+        $occurences = array_count_values($dices);
+
+        $number = 0;
+        foreach ($occurences as $occurence) {
+            if ($occurence === 2) {
+                $number++;
+            }
+        }
+
+        if ($number === 3) {
+            $score = 800;
         }
 
         return $score;

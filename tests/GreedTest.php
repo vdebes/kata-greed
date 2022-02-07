@@ -55,5 +55,13 @@ class GreedTest extends TestCase
         yield 'triple sixes' => [
             [6, 6, 6], 600
         ];
+
+        yield 'Straight' => [
+            [1, 2, 3, 4, 5, 6], 1200
+        ];
+
+        yield 'Three Pairs [2,2,3,3,4,4] (800)' => [
+            [2, 2, 3, 3, 4, 4], 800
+        ];
     }
 }

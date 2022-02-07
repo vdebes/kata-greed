@@ -4,6 +4,9 @@ namespace Vdebes\KataGreed;
 
 class Greed
 {
+    /**
+     * @param int[] $dices
+     */
     public function score(array $dices): int
     {
         if (count($dices) > 6) {
@@ -55,6 +58,17 @@ class Greed
 
         if ($count[6] === 3) {
             $score += 600;
+        }
+
+        if (
+            $count[6] === 1 &&
+            $count[5] === 1 &&
+            $count[4] === 1 &&
+            $count[3] === 1 &&
+            $count[2] === 1 &&
+            $count[1] === 1
+        ) {
+            $score += 1200;
         }
 
         return $score;

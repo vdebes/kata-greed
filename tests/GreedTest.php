@@ -21,21 +21,39 @@ class GreedTest extends TestCase
         $this->assertEquals($expectedResult, $score);
     }
 
-    public function diceProvider(): array
+    public function diceProvider(): \Generator
     {
-        return [
-            [
-                [1, 3, 6], 100
-            ],
-            [
-                [2, 5, 6], 50
-            ],
-            [
-                [1, 1, 1], 1000
-            ],
-            [
-                [5, 5, 5], 500
-            ],
+        
+        yield 'single one' => [
+            [1, 3, 6], 100
+        ];
+
+        yield 'single five' => [
+            [2, 5, 6], 50
+        ];
+
+        yield 'triple ones' => [
+            [1, 1, 1], 1000
+        ];
+
+        yield 'triple twos' => [
+            [2, 2, 2], 200
+        ];
+
+        yield 'triple threes' => [
+            [3, 3, 3], 300
+        ];
+
+        yield 'triple fours' => [
+            [4, 4, 4], 400
+        ];
+
+        yield 'triple fives' => [
+            [5, 5, 5], 500
+        ];
+
+        yield 'triple sixes' => [
+            [6, 6, 6], 600
         ];
     }
 }

@@ -80,6 +80,10 @@ class Greed
             }
         }
 
+        if (array_search(4, $occurences)) {
+            $score = $score * 2;
+        }
+
         if ($number === 3) {
             $score = 800;
         }

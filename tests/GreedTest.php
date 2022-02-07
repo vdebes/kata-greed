@@ -63,5 +63,9 @@ class GreedTest extends TestCase
         yield 'Three Pairs [2,2,3,3,4,4] (800)' => [
             [2, 2, 3, 3, 4, 4], 800
         ];
+
+        yield 'Four of a kind' => [
+            [1, 1, 1, 1], 2000
+        ];
     }
 }

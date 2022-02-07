@@ -4,13 +4,21 @@ namespace Vdebes\KataGreed;
 
 class Greed
 {
-    public function score(array $dices): void
+    public function score(array $dices): int
     {
         if (count($dices) > 6) {
             throw new \Exception('too much dice');
         }
 
-        $count = [];
+        $count = [
+            1 => 0,
+            2 => 0,
+            3 => 0,
+            4 => 0,
+            5 => 0,
+            6 => 0,
+        ];
+
         foreach ($dices as $dice) {
             $count[$dice] = isset($count[$dice]) ? $count[$dice] + 1 : 1;
         }
@@ -48,5 +56,7 @@ class Greed
         if ($count[6] === 3) {
             $score += 600;
         }
+
+        return $score;
     }
 }

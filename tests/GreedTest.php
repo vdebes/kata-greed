@@ -10,11 +10,32 @@ class GreedTest extends TestCase
         self::assertIsObject(new Greed());
     }
 
-    public function testInput(): void
+    /**
+     * @dataProvider diceProvider
+     */
+    public function testInput(array $input, int $expectedResult): void
     {
-        $someValue = 42;
         $greed = new Greed();
-        $greed->score($someValue);
-        self::expectException(\Exception::class);
+        $score = $greed->score($input);
+
+        $this->assertEquals($expectedResult, $score);
+    }
+
+    public function diceProvider(): array
+    {
+        return [
+            [
+                [1, 3, 6], 100
+            ],
+            [
+                [2, 5, 6], 50
+            ],
+            [
+                [1, 1, 1], 1000
+            ],
+            [
+                [5, 5, 5], 500
+            ],
+        ];
     }
 }

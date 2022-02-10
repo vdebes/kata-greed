@@ -14,7 +14,7 @@ class Greed
         usort(
             $scoringRules,
             function (ScoringRule $scoringRule1, ScoringRule $scoringRule2): int {
-                return $scoringRule1->getNumberOfDiceHandled() <=> $scoringRule2->getNumberOfDiceHandled();
+                return $scoringRule2->getNumberOfDiceHandled() <=> $scoringRule1->getNumberOfDiceHandled();
             }
         );
 

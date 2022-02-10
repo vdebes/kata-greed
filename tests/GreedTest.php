@@ -2,6 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use Vdebes\KataGreed\Greed;
+use Vdebes\KataGreed\Scoring;
 
 class GreedTest extends TestCase
 {
@@ -17,7 +18,9 @@ class GreedTest extends TestCase
      */
     public function testGreedScoring(array $dice, int $expectedScore): void
     {
-        $greed = new Greed();
+        $greed = new Greed(
+            new Scoring\ThreePairsRule(),
+        );
 
         self::assertSame($expectedScore, $greed->score($dice));
     }

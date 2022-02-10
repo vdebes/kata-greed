@@ -4,14 +4,13 @@
 require __DIR__.'/vendor/autoload.php';
 
 use Symfony\Component\Console\Helper\QuestionHelper;
-use Symfony\Component\Console\Helper\Table;
-use Symfony\Component\Console\Helper\TableSeparator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\SingleCommandApplication;
 use Vdebes\KataGreed\Greed;
+use Vdebes\KataGreed\Scoring;
 
 (new SingleCommandApplication())
     ->setName('greed')
@@ -48,7 +47,9 @@ use Vdebes\KataGreed\Greed;
             $dice = implode(', ', $rollsResult);
             $output->writeln("You rolled $dice.");
 
-            $greed = new Greed();
+            $greed = new Greed(
+                new Scoring\ThreePairsRule(),
+            );
             $score = $greed->score($rollsResult);
 
             $output->writeln("You scored $score!");

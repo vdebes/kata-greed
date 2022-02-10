@@ -51,6 +51,11 @@ use Vdebes\KataGreed\Scoring;
                 new Scoring\ThreePairsRule(),
                 new Scoring\StraightRule(),
                 new Scoring\SmallStraightRule(),
+                new Scoring\One1Rule(),
+                new Scoring\Two1Rule(),
+                new Scoring\One5Rule(),
+                new Scoring\Two5Rule(),
+                new Scoring\MultipleSameValueDiceRule(),
             );
             $score = $greed->score($rollsResult);
 

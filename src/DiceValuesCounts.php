@@ -90,4 +90,20 @@ class DiceValuesCounts
     {
         return array_count_values($this->valuesCount)[1] ?? 0;
     }
+
+    public function removeDice(int ...$dice): self
+    {
+        $existingDice = $this->dice;
+
+        foreach ($dice as $die) {
+            $key = array_search($die, $existingDice);
+            if ($key === false) {
+                throw new \RuntimeException('Cannot remove a missing die.');
+            }
+
+            unset($existingDice[$key]);
+        }
+
+        return self::buildFromDice(...array_values($existingDice));
+    }
 }

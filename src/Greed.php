@@ -42,25 +42,6 @@ class Greed
             }
         }
 
-        if (
-            $diceValuesCount->getNumberOfUniqueDiceValue() === 4
-            && (
-                $diceValuesCount->getNumberOf1() === 0
-                || $diceValuesCount->getNumberOf6() === 0
-            )
-        ) {
-            $score += 600;
-            $dice = array_merge(
-                $diceValuesCount->getNumberOf1() === 2 ? [1] : [],
-                $diceValuesCount->getNumberOf2() === 2 ? [2] : [],
-                $diceValuesCount->getNumberOf3() === 2 ? [3] : [],
-                $diceValuesCount->getNumberOf4() === 2 ? [4] : [],
-                $diceValuesCount->getNumberOf5() === 2 ? [5] : [],
-                $diceValuesCount->getNumberOf6() === 2 ? [6] : [],
-            );
-            $diceValuesCount = DiceValuesCounts::buildFromDice(...$dice);
-        }
-
         $score += self::scoreDiceValue(1, $diceValuesCount->getNumberOf1());
         $score += self::scoreDiceValue(2, $diceValuesCount->getNumberOf2());
         $score += self::scoreDiceValue(3, $diceValuesCount->getNumberOf3());
@@ -74,33 +55,33 @@ class Greed
     private static function scoreDiceValue(int $diceValue, int $diceNumber): int
     {
         switch ($diceValue) {
-            case 1:
-                if ($diceNumber === 1) {
-                    return 100;
-                }
-                if ($diceNumber === 2) {
-                    return 200;
-                }
-                if ($diceNumber >= 3) {
-                    return 1000 * self::getDiceNumberBonus($diceNumber);
-                }
-                break;
-            case 5:
-                if ($diceNumber === 1) {
-                    return 50;
-                }
-                if ($diceNumber === 2) {
-                    return 100;
-                }
-                // Except for when there's only one die 5, 5 dice scores the same as 2, 3, 4 and 6.
-            case 2:
-            case 3:
-            case 4:
-            case 6:
-                if ($diceNumber >= 3) {
-                    return 100 * $diceValue * self::getDiceNumberBonus($diceNumber);
-                }
-                break;
+        case 1:
+            if ($diceNumber === 1) {
+                return 100;
+            }
+            if ($diceNumber === 2) {
+                return 200;
+            }
+            if ($diceNumber >= 3) {
+                return 1000 * self::getDiceNumberBonus($diceNumber);
+            }
+            break;
+        case 5:
+            if ($diceNumber === 1) {
+                return 50;
+            }
+            if ($diceNumber === 2) {
+                return 100;
+            }
+            // Except for when there's only one die 5, 5 dice scores the same as 2, 3, 4 and 6.
+        case 2:
+        case 3:
+        case 4:
+        case 6:
+            if ($diceNumber >= 3) {
+                return 100 * $diceValue * self::getDiceNumberBonus($diceNumber);
+            }
+            break;
         }
 
         return 0;

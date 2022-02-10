@@ -42,10 +42,6 @@ class Greed
             }
         }
 
-        if ($diceValuesCount->getNumberOfUniqueDiceValue() === 6) {
-            return 1200;
-        }
-
         if (
             $diceValuesCount->getNumberOfUniqueDiceValue() === 4
             && (

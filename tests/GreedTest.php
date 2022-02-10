@@ -20,6 +20,7 @@ class GreedTest extends TestCase
     {
         $greed = new Greed(
             new Scoring\ThreePairsRule(),
+            new Scoring\StraightRule(),
         );
 
         self::assertSame($expectedScore, $greed->score($dice));

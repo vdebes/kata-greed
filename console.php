@@ -49,6 +49,7 @@ use Vdebes\KataGreed\Scoring;
 
             $greed = new Greed(
                 new Scoring\ThreePairsRule(),
+                new Scoring\StraightRule(),
             );
             $score = $greed->score($rollsResult);
 

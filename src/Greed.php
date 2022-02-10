@@ -9,57 +9,45 @@ class Greed
      */
     public function score(array $dice): int
     {
-        $diceCounts = self::countRollsResults(...$dice);
+        $diceValuesCount = DiceValuesCounts::buildFromDice(...$dice);
 
-        if ((array_count_values($diceCounts)[2] ?? 0) >= 3) {
+        if ($diceValuesCount->getNumberOfPairs() === 3) {
             return 800;
         }
 
-        if ((array_count_values($diceCounts)[1] ?? 0) === 6) {
+        if ($diceValuesCount->getNumberOfUniqueDiceValue() === 6) {
             return 1200;
         }
 
         $score = 0;
 
-        $diceValuesCount = array_count_values($diceCounts);
         if (
-            ($diceValuesCount[1] ?? 0) === 4
+            $diceValuesCount->getNumberOfUniqueDiceValue() === 4
             && (
-                !array_key_exists(1, $diceCounts)
-                || !array_key_exists(6, $diceCounts)
+                $diceValuesCount->getNumberOf1() === 0
+                || $diceValuesCount->getNumberOf6() === 0
             )
         ) {
             $score += 600;
-            $dice = [array_search(2, $diceCounts)];
-            $diceCounts = self::countRollsResults(...$dice);
+            $dice = array_merge(
+                $diceValuesCount->getNumberOf1() === 2 ? [1] : [],
+                $diceValuesCount->getNumberOf2() === 2 ? [2] : [],
+                $diceValuesCount->getNumberOf3() === 2 ? [3] : [],
+                $diceValuesCount->getNumberOf4() === 2 ? [4] : [],
+                $diceValuesCount->getNumberOf5() === 2 ? [5] : [],
+                $diceValuesCount->getNumberOf6() === 2 ? [6] : [],
+            );
+            $diceValuesCount = DiceValuesCounts::buildFromDice(...$dice);
         }
 
-        foreach ($diceCounts as $diceValue => $diceNumber) {
-            $score += self::scoreDiceValue($diceValue, $diceNumber);
-        }
+        $score += self::scoreDiceValue(1, $diceValuesCount->getNumberOf1());
+        $score += self::scoreDiceValue(2, $diceValuesCount->getNumberOf2());
+        $score += self::scoreDiceValue(3, $diceValuesCount->getNumberOf3());
+        $score += self::scoreDiceValue(4, $diceValuesCount->getNumberOf4());
+        $score += self::scoreDiceValue(5, $diceValuesCount->getNumberOf5());
+        $score += self::scoreDiceValue(6, $diceValuesCount->getNumberOf6());
 
         return $score;
-    }
-
-    /**
-     * Count number of dice for each of the 6 values
-     *
-     * @return array{1: int, 2: int, 3: int, 4: int, 5: int, 6: int}
-     */
-    private static function countRollsResults(int ...$rollsResults): array
-    {
-        $diceCount = array_fill_keys([1, 2, 3, 4, 5, 6], 0);
-
-        $rollsCount = array_count_values($rollsResults);
-        foreach ($diceCount as $diceValue => $diceNumber) {
-            if (array_key_exists($diceValue, $rollsCount) === false) {
-                continue;
-            }
-
-            $diceCount[$diceValue] = $rollsCount[$diceValue];
-        }
-
-        return $diceCount;
     }
 
     private static function scoreDiceValue(int $diceValue, int $diceNumber): int

@@ -1,7 +1,7 @@
 # kata-greed
 ![PHP](https://github.com/vdebes/kata-greed/actions/workflows/php.yml/badge.svg)
 
-Inspired from [CodingDojo.org](https://codingdojo.org/kata/Greed/)
+test Inspired from [CodingDojo.org](https://codingdojo.org/kata/Greed/)
 
 ## Rules
 Write a class Greed with a score() method that accepts an array of exactly 6 die values (1 to 6). Scoring rules are based on [the french game 10000](https://fr.wikipedia.org/wiki/10000#Jeu_%C3%A0_6_d%C3%A9s) as follows:
